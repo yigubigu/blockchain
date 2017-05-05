@@ -1,0 +1,26 @@
+logging:
+  file: /var/log/account-application.log
+  level:
+    com.alct: DEBUG
+    
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: alct
+  cloud:
+    stream:
+      bindings:
+        device-location-source:
+          binder: rabbit
+          destination: device-location
+  rabbitmq:
+    host: localhost
+    port: 5672
+    
+server:
+  port: 8090
+blockchain:
+  clientToken: client:4670c9c29058c010e240c748a5eb67680e6e3519e82b996c119ec68e20fe4399  
+  chainServerUrl: http://61.152.132.245:1999

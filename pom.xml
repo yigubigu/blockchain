@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-parent</artifactId>
+    <version>Brixton.SR7</version>
+    <relativePath />
+  </parent>
+
+  <groupId>com.velo.blockchain</groupId>
+  <artifactId>blockchain</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <name>block chain parent</name>
+
+  <properties>
+    <project.build.jdk>1.8</project.build.jdk>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${project.build.jdk}</source>
+          <target>${project.build.jdk}</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <modules>
+  	<!-- framework-->
+    <module>dependency</module>
+    <module>discovery</module>
+    <module>config</module>
+    <!--acccount-->
+    <module>accounts/api</module>
+    <module>accounts/core</module>
+	  <module>accounts/dev-server</module>	
+
+    <!--acccount-->
+    <module>assets/api</module>
+    <module>assets/core</module>
+    
+    <!--transaction-->    
+    <module>transaction/api</module>
+    <module>transaction/core</module>
+  </modules>
+
+</project>

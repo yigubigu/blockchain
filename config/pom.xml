@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.velo.blockchain</groupId>
+    <artifactId>blockchain</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <artifactId>config-server</artifactId>
+  <packaging>jar</packaging>
+  <name>config-server</name>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.velo.blockchain</groupId>
+        <artifactId>blockchain-dependency</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-config-server</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-eureka-server</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>config-server</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>com.spotify</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <version>0.4.12</version>
+        <configuration>
+          <imageName>registry.cn-hangzhou.aliyuncs.com/blockchain/config</imageName>
+          <dockerDirectory>${project.basedir}/docker</dockerDirectory>
+          <resources>
+            <resource>
+              <directory>${project.basedir}/target</directory>
+              <include>${project.build.finalName}.jar</include>
+            </resource>
+          </resources>
+          <serverId>docker-aliyun</serverId>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
