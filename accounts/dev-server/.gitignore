@@ -1,0 +1,7 @@
+/target/
+/test-output/
+/.settings/
+*.project
+*.classpath
+push.bat
+/bin/
